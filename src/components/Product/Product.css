@@ -1,0 +1,39 @@
+.product{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    margin-right: 5px;
+    padding-bottom: 30px;
+
+}
+.product-name{
+    color: blue;
+    font-weight: 400;
+}
+.btn-regular{
+    color: black;
+    background-color: #F0C14B;
+    border: 1px solid black;
+    padding: 5px 65px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.fa-star{
+    color: goldenrod;
+}
+.product-info{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}
+.review{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.product-img{
+    width: 245px;
+    height: 200px;
+}
