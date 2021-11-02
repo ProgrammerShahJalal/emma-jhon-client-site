@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, getIdToken } from "firebase/auth";
 import initializeAuthentication from "../Firebase/firebase.init";
 
 initializeAuthentication();
@@ -7,10 +7,10 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
 
     const auth = getAuth();
-    const googleprovider = new GoogleAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
 
     const signInUsingGoogle = () => {
-        return signInWithPopup(auth, googleprovider)
+        return signInWithPopup(auth, googleProvider)
     }
 
     const logout = () => {
@@ -23,6 +23,8 @@ const useFirebase = () => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
             if (user) {
+                getIdToken(user)
+                    .then(idToken => localStorage.setItem('idToken', idToken))
                 setUser(user)
             }
         })
