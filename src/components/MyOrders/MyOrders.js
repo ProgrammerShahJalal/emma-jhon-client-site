@@ -16,14 +16,15 @@ const MyOrders = () => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    res.json()
+                    return res.json();
                 }
                 else if (res.status === 401) {
                     history.push('/login');
                 }
+
             })
             .then(data => setMyOrders(data))
-    }, [history, user.email])
+    }, [])
     return (
         <div>
             <h2>My Orders {myOrders.length}</h2>
